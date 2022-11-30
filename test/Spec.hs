@@ -4,17 +4,20 @@ import Test.QuickCheck
 import qualified Data.Set as Set
 import qualified Data.Map as Map
 
-import Day1
+import Util
+import Day2020_1
 
 main :: IO ()
 main = hspec $ do
-  describe "day1" $ do
-    let example = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
-    it "countIncreases" $ do
-      countIncreases [] `shouldBe` 0
-      countIncreases example `shouldBe` 7
+  describe "util" $ do
+    it "combinations" $ do
+      combinations [1] `shouldBe` []
+      combinations [1,2] `shouldBe` [(1,2)]
+      combinations [1,2,3] `shouldBe` [(1,2), (1,3), (2,3)]
 
-    it "slidingIncreases" $ do
-      slidingIncreases [1, 2] `shouldBe` 0
-      slidingIncreases example `shouldBe` 5
+  describe "2020 day 1" $ do
+    let example = [1721,979,366,299,675,1456]
+    it "expenseReport" $ do
+      expenseReport example `shouldBe` 514579
+
 

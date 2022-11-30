@@ -43,9 +43,7 @@ packages:
 #
 # extra-deps: []
 extra-deps:
-- hspec-2.7.10
-- hspec-core-2.7.10@sha256:2aba6ea126442b29e8183ab27f1c811706b19b1d83b02f193a896f6fc1589d13,4621
-- hspec-discover-2.7.10@sha256:d08bf5dd785629f589571477d9beb7cd91529471bd89f39517c1cb4b9b38160f,2184
+- hspec-2.9.7
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

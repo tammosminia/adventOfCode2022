@@ -30,3 +30,11 @@ slidingWindow n xz@(x:xs)
   | otherwise = v : slidingWindow n xs
   where
     v = take n xz
+
+-- return all combinations of 2 elements (only one way)
+combinations :: [a] -> [(a, a)]
+combinations [] = []
+combinations (h : t) = rh ++ rt
+  where
+    rh = map (\x -> (h, x)) t
+    rt = combinations t

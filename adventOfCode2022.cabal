@@ -14,6 +14,7 @@ extra-source-files:
 library
   exposed-modules:
       Day2020_1
+      Day2020_2
       Util
   other-modules:
       Paths_adventOfCode2022
@@ -34,6 +35,7 @@ executable adventOfCode2022-exe
   main-is: Main.hs
   other-modules:
       Run2020_1
+      Run2020_2
       Paths_adventOfCode2022
   hs-source-dirs:
       app

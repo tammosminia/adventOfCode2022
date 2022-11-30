@@ -24,6 +24,9 @@ replace xs i e = case splitAt i xs of
 charToInt :: Char -> Int
 charToInt c = read [c] :: Int
 
+stringToInt :: String -> Int
+stringToInt c = read c :: Int
+
 slidingWindow :: Int -> [a] -> [[a]]
 slidingWindow n xz@(x:xs)
   | length v < n = []
@@ -41,3 +44,6 @@ combinations i (h : t) = rh ++ rt
     rh = map (\x -> (h : x)) (lesser t)
     lesser l = combinations (i - 1) l
     rt = combinations i t
+
+count :: (a -> Bool) -> [a] -> Int
+count p = length . filter p

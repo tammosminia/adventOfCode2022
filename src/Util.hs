@@ -31,10 +31,13 @@ slidingWindow n xz@(x:xs)
   where
     v = take n xz
 
--- return all combinations of 2 elements (only one way)
-combinations :: [a] -> [(a, a)]
-combinations [] = []
-combinations (h : t) = rh ++ rt
+-- return all combinations of i elements (only one way)
+combinations :: Int -> [a] -> [[a]]
+combinations 1 [] = []
+combinations 1 (h : t) = [h] : combinations 1 t
+combinations i [] = []
+combinations i (h : t) = rh ++ rt
   where
-    rh = map (\x -> (h, x)) t
-    rt = combinations t
+    rh = map (\x -> (h : x)) (lesser t)
+    lesser l = combinations (i - 1) l
+    rt = combinations i t

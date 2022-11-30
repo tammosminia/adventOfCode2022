@@ -26,7 +26,7 @@ library:
   source-dirs: src
 
 executables:
-  adventOfCode2021-exe:
+  adventOfCode2022-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -37,7 +37,7 @@ executables:
     - adventOfCode2022
 
 tests:
-  adventOfCode2021-test:
+  adventOfCode2022-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:

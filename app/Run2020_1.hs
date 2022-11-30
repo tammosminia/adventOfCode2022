@@ -1,4 +1,4 @@
-module Run1 where
+module Run2020_1 where
 
 import Day2020_1
 

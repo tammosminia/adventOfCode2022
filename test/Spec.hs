@@ -7,6 +7,7 @@ import qualified Data.Map as Map
 import Util
 import Day2020_1
 import Day2020_2
+import Day1
 
 main :: IO ()
 main = hspec $ do
@@ -52,4 +53,10 @@ main = hspec $ do
       validPassword2 "2-9 c: aaaaaaaac" `shouldBe` True
       validPassword2 "2-9 c: ccccccccc" `shouldBe` False
 
+  describe "day 1" $ do
+    let example = [[1000,2000,3000],[4000],[5000,6000],[7000,8000,9000],[10000]]
+    it "day1a" $ do
+      day1a example `shouldBe` 24000
+    it "day1b" $ do
+      day1b example `shouldBe` 45000
 

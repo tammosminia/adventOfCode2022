@@ -8,6 +8,7 @@ import Util
 import Day2020_1
 import Day2020_2
 import Day1
+import Day2
 
 main :: IO ()
 main = hspec $ do
@@ -59,4 +60,11 @@ main = hspec $ do
       day1a example `shouldBe` 24000
     it "day1b" $ do
       day1b example `shouldBe` 45000
+
+  describe "day 2" $ do
+    let example = ["A Y","B X","C Z"]
+    it "day2a" $ do
+      day2a example `shouldBe` 15
+    it "day2b" $ do
+      day2b example `shouldBe` 12
 

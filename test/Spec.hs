@@ -9,6 +9,7 @@ import Day2020_1
 import Day2020_2
 import Day1
 import Day2
+import Day3
 
 main :: IO ()
 main = hspec $ do
@@ -67,4 +68,16 @@ main = hspec $ do
       day2a example `shouldBe` 15
     it "day2b" $ do
       day2b example `shouldBe` 12
+
+  describe "day 3" $ do
+    let example = ["vJrwpWtwJgWrhcsFMMfFFhFp","jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL","PmmdzqPrVvPwwTWBwg","wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn","ttgJtRGJQctTZtZT","CrZsJsPPZsGzwwsLwLmpwMDw"]
+    it "day3a" $ do
+      day3a example `shouldBe` 157
+
+    it "itemPriority" $ do
+      itemPriority 'z' `shouldBe` 26
+      itemPriority 'Z' `shouldBe` 52
+      
+    it "day3b" $ do
+      day3b example `shouldBe` 70
 

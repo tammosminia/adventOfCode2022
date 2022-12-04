@@ -10,6 +10,7 @@ import Day2020_2
 import Day1
 import Day2
 import Day3
+import Day4
 
 main :: IO ()
 main = hspec $ do
@@ -80,4 +81,12 @@ main = hspec $ do
       
     it "day3b" $ do
       day3b example `shouldBe` 70
+
+  describe "day 4" $ do
+    let example = [[2,4,6,8],[2,3,4,5],[5,7,7,9],[2,8,3,7],[6,6,4,6],[2,6,4,8]]
+    it "day4a" $ do
+      day4a example `shouldBe` 2
+
+    it "day4b" $ do
+      day4b example `shouldBe` 4
 

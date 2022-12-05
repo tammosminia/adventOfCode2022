@@ -11,6 +11,7 @@ import Day1
 import Day2
 import Day3
 import Day4
+import Day5
 
 main :: IO ()
 main = hspec $ do
@@ -89,4 +90,13 @@ main = hspec $ do
 
     it "day4b" $ do
       day4b example `shouldBe` 4
+
+  describe "day 5" $ do
+    let exampleStacks = ["NZ", "DCM", "P"]
+    let exampleMoves = ["move 1 from 2 to 1","move 3 from 1 to 3","move 2 from 2 to 1","move 1 from 1 to 2"]
+    it "day5a" $ do
+      day5a exampleStacks exampleMoves `shouldBe` "CMZ"
+      
+    it "day5b" $ do
+      day5b exampleStacks exampleMoves `shouldBe` "MCD"
 

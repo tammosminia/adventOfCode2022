@@ -12,6 +12,7 @@ import Day2
 import Day3
 import Day4
 import Day5
+import Day6
 
 main :: IO ()
 main = hspec $ do
@@ -100,3 +101,13 @@ main = hspec $ do
     it "day5b" $ do
       day5b exampleStacks exampleMoves `shouldBe` "MCD"
 
+  describe "day 6" $ do
+    it "day6a" $ do
+      day6a "mjqjpqmgbljsphdztnvjfqwrcgsmlb" `shouldBe` 7
+      day6a "bvwbjplbgvbhsrlpgdmjqwftvncz" `shouldBe` 5
+      day6a "nppdvjthqldpwncqszvftbrmjlhg" `shouldBe` 6
+      day6a "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg" `shouldBe` 10
+      day6a "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" `shouldBe` 11
+
+    it "day6b" $ do
+      day6b "mjqjpqmgbljsphdztnvjfqwrcgsmlb" `shouldBe` 19

@@ -13,6 +13,7 @@ import Day3
 import Day4
 import Day5
 import Day6
+import Day7
 
 main :: IO ()
 main = hspec $ do
@@ -111,3 +112,13 @@ main = hspec $ do
 
     it "day6b" $ do
       day6b "mjqjpqmgbljsphdztnvjfqwrcgsmlb" `shouldBe` 19
+
+  describe "day 7" $ do
+    let example = ["$ cd /","$ ls","dir a","14848514 b.txt","8504156 c.dat","dir d","$ cd a","$ ls","dir e","29116 f","2557 g","62596 h.lst","$ cd e","$ ls","584 i","$ cd ..","$ cd ..","$ cd d","$ ls","4060174 j","8033020 d.log","5626152 d.ext","7214296 k"]
+    it "parseInput" $ do
+      print $ show $ parseInput ["$ cd /","$ ls","dir a"]
+      print $ show $ parseInput example
+
+    it "day7a" $ do
+      day7a example `shouldBe` 95437
+

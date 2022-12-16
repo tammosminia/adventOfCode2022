@@ -27,6 +27,9 @@ charToInt c = read [c] :: Int
 stringToInt :: String -> Int
 stringToInt c = read c :: Int
 
+stringToInteger :: String -> Integer
+stringToInteger c = read c :: Integer
+
 slidingWindow :: Int -> [a] -> [[a]]
 slidingWindow n xz@(x:xs)
   | length v < n = []

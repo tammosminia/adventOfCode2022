@@ -33,6 +33,7 @@ library
     , containers
     , hashable
     , hspec
+    , mtl
     , pqueue
     , split
     , unordered-containers
@@ -61,6 +62,7 @@ executable adventOfCode2022-exe
     , containers
     , hashable
     , hspec
+    , mtl
     , pqueue
     , split
     , unordered-containers
@@ -81,6 +83,7 @@ test-suite adventOfCode2022-test
     , containers
     , hashable
     , hspec
+    , mtl
     , pqueue
     , split
     , unordered-containers

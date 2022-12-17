@@ -21,6 +21,7 @@ dependencies:
 - pqueue
 - unordered-containers
 - hashable
+- mtl
 
 library:
   source-dirs: src

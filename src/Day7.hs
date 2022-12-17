@@ -13,10 +13,6 @@ type FileName = String
 type FileSize = Integer
 data FileTree = Directory FileName [FileTree] | File FileName FileSize deriving (Eq, Show)
 
---instance Show FileTree where
---  show (Directory name files) = "dir " ++ name -- ++ "[" ++ (show files) ++ "]"
---  show (File name size) = name
-
 day7a :: [String] -> Integer
 day7a lines = sum $ filter (< 100000) $ dirSizes $ parseInput lines
 
@@ -60,9 +56,8 @@ parseFile s = File name (stringToInteger size)
 --      (dcfs, dcls2) = parseFiles dcls
 --      (fcfs, fcls) = parseFiles t
 
--- with State monad
---readLine :: State Input InputLine
---readLine = State (\(x:xs) -> (x,xs))
+
+-- with State monad to keep track of the inputlines
 
 readLine :: State Input InputLine
 readLine = do

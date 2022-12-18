@@ -6,7 +6,6 @@ import Data.List.Split
 import Debug.Trace
 import Control.Monad.State
 
-
 type InputLine = String
 type Input = [InputLine]
 type FileName = String
@@ -15,6 +14,12 @@ data FileTree = Directory FileName [FileTree] | File FileName FileSize deriving 
 
 day7a :: [String] -> Integer
 day7a lines = sum $ filter (< 100000) $ dirSizes $ parseInput lines
+
+day7b :: [String] -> Integer
+day7b lines = minimum $ filter (>= spaceToFree) $ dirSizes dir
+  where
+    dir = parseInput lines
+    spaceToFree = sizeOf dir - (70000000 - 30000000)
 
 dirSizes :: FileTree -> [Integer]
 dirSizes (File n s) = []

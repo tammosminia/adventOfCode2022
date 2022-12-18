@@ -121,4 +121,7 @@ main = hspec $ do
 
     it "day7a" $ do
       day7a example `shouldBe` 95437
+      
+    it "day7b" $ do
+      day7b example `shouldBe` 24933642
 

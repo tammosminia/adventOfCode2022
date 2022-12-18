@@ -7,4 +7,5 @@ input = ["$ cd /","$ ls","246027 gldg.jrd","dir qffvbf","dir qjjgh","dir vpjqpqf
 main :: IO ()
 main = do
   print $ day7a input
+  print $ day7b input
 

@@ -50,3 +50,9 @@ combinations i (h : t) = rh ++ rt
 
 count :: (a -> Bool) -> [a] -> Int
 count p = length . filter p
+
+takeUntil :: (a -> Bool) -> [a] -> [a]
+takeUntil pred [] = []
+takeUntil pred (x:xs) 
+  | pred x = [x]
+  | otherwise = (x:takeUntil pred xs)

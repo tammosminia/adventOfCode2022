@@ -5,6 +5,7 @@ import qualified Data.Set as Set
 import qualified Data.Map as Map
 
 import Util
+import qualified Grid
 import Day2020_1
 import Day2020_2
 import Day1
@@ -14,6 +15,7 @@ import Day4
 import Day5
 import Day6
 import Day7
+import Day8
 
 main :: IO ()
 main = hspec $ do
@@ -34,6 +36,13 @@ main = hspec $ do
 
     it "count" $ do
       count (>2) [1,2,3,4,5] `shouldBe` 3
+      
+    it "takeUntil" $ do
+      takeUntil (>2) [1,2,3,4,5] `shouldBe` [1,2,3]
+      
+  describe "grid" $ do
+    it "allPoints" $ do
+      Grid.allPoints (Grid.init ["12", "34"])  `shouldBe` [(0,0), (0,1), (1,0), (1,1)]
       
   describe "2020 day 1" $ do
     let example = [1721,979,366,299,675,1456]
@@ -125,3 +134,16 @@ main = hspec $ do
     it "day7b" $ do
       day7b example `shouldBe` 24933642
 
+  describe "day 8" $ do
+    let example = ["30373","25512","65332","33549","35390"]
+    let forest = Grid.init example
+    it "day8a" $ do
+      day8a example `shouldBe` 21
+    it "day8b" $ do
+      day8b example `shouldBe` 8
+    it "surroundings" $ do
+      surroundings forest (2,1) `shouldBe` [[3],[1,2],[3,5,3],[5,2]]
+    it "scenicScore" $ do
+      scenicScore forest (2,1) `shouldBe` 4
+    it "visibleTreesInLine" $ do
+      visibleTreesInLine 5 [3,5,3] `shouldBe` 2

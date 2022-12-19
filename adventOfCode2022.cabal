@@ -22,6 +22,8 @@ library
       Day5
       Day6
       Day7
+      Day8
+      Grid
       Util
   other-modules:
       Paths_adventOfCode2022
@@ -51,6 +53,7 @@ executable adventOfCode2022-exe
       Run5
       Run6
       Run7
+      Run8
       Paths_adventOfCode2022
   hs-source-dirs:
       app

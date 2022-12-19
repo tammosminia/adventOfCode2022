@@ -16,6 +16,7 @@ import Day5
 import Day6
 import Day7
 import Day8
+import Day9
 
 main :: IO ()
 main = hspec $ do
@@ -125,8 +126,8 @@ main = hspec $ do
   describe "day 7" $ do
     let example = ["$ cd /","$ ls","dir a","14848514 b.txt","8504156 c.dat","dir d","$ cd a","$ ls","dir e","29116 f","2557 g","62596 h.lst","$ cd e","$ ls","584 i","$ cd ..","$ cd ..","$ cd d","$ ls","4060174 j","8033020 d.log","5626152 d.ext","7214296 k"]
     it "parseInput" $ do
-      print $ show $ parseInput ["$ cd /","$ ls","dir a"]
-      print $ show $ parseInput example
+      print $ show $ Day7.parseInput ["$ cd /","$ ls","dir a"]
+      print $ show $ Day7.parseInput example
 
     it "day7a" $ do
       day7a example `shouldBe` 95437
@@ -147,3 +148,8 @@ main = hspec $ do
       scenicScore forest (2,1) `shouldBe` 4
     it "visibleTreesInLine" $ do
       visibleTreesInLine 5 [3,5,3] `shouldBe` 2
+
+  describe "day 9" $ do
+    let example = ["R 4","U 4","L 3","D 1","R 4","D 1","L 5","R 2"]
+    it "day9a" $ do
+      day9a example `shouldBe` 13

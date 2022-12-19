@@ -51,3 +51,13 @@ pointsInDirection grid (x, y) North = [(x, ny)| ny <- reverse [0..(y-1)]]
 pointsInDirection grid (x, y) South = [(x, ny)| ny <- [(y+1)..(snd (bottomRight grid))]]
 pointsInDirection grid (x, y) West = [(nx, y)| nx <- reverse [0..(x-1)]]
 pointsInDirection grid (x, y) East = [(nx, y)| nx <- [(x+1)..(fst (bottomRight grid))]]
+
+pointDiff :: Direction -> Point
+pointDiff North = (0, -1)
+pointDiff South = (0, 1)
+pointDiff West = (-1, 0)
+pointDiff East = (1, 0)
+
+move :: Direction -> Point -> Point
+move d p = plus p $ pointDiff d
+

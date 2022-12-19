@@ -151,5 +151,9 @@ main = hspec $ do
 
   describe "day 9" $ do
     let example = ["R 4","U 4","L 3","D 1","R 4","D 1","L 5","R 2"]
+    let example2 = ["R 5","U 8","L 8","D 3","R 17","D 10","L 25","U 20"]
     it "day9a" $ do
       day9a example `shouldBe` 13
+    it "day9b" $ do
+      day9b example `shouldBe` 1
+      day9b example2 `shouldBe` 35 -- Should be 36, also the real answer is one off

@@ -3,18 +3,25 @@ module Day9 where
 import Data.List
 import Data.List.Split
 import Control.Monad.State
+import Debug.Trace
 import Util
 import qualified Grid
 
 data Move = Move Grid.Direction Int
-data Rope = Rope { path :: [Grid.Point], h :: Grid.Point, t :: Grid.Point }
+data Rope = Rope { path :: [Grid.Point], hts :: [Grid.Point] }
 type RopeState = State Rope
 
 day9a :: [String] -> Int
-day9a input = length $ nub path
+day9a = runDay 1
+
+day9b :: [String] -> Int
+day9b = runDay 9
+
+runDay :: Int -> [String] -> Int
+runDay knots input = length $ nub path
   where
-    initState = Rope [] (0,0) (0,0)
-    Rope path h t = execState (go (parseInput input)) initState
+    initState = Rope [] $ replicate (knots+1) (0,0)
+    Rope path _ = execState (go (parseInput input)) initState
 
 parseInput :: [String] -> [Move]
 parseInput = map parseLine
@@ -28,18 +35,18 @@ parseInput = map parseLine
     
 rememberPoint :: Grid.Point -> RopeState ()
 rememberPoint p = do
-  Rope path h t <- get
-  put (Rope (p:path) h t)
+  Rope path hts <- get
+  put (Rope (p:path) hts)
   
-getHt :: RopeState (Grid.Point, Grid.Point)
-getHt = do
-  Rope path h t <- get
-  return (h, t)
+getHts :: RopeState [Grid.Point]
+getHts = do
+  Rope path hts <- get
+  return hts
 
-putHt :: (Grid.Point, Grid.Point) -> RopeState ()
-putHt (h, t) = do
-  Rope path _ _ <- get
-  put (Rope path h t)
+putHts :: [Grid.Point] -> RopeState ()
+putHts hts = do
+  Rope path _ <- get
+  put (Rope path hts)
 
 touches :: Grid.Point -> Grid.Point -> Bool
 touches (hx, hy) (tx, ty) = (abs (hx - tx) < 2) && (abs (hy - ty) < 2)
@@ -48,10 +55,23 @@ go :: [Move] -> RopeState ()
 go [] = return ()
 go ((Move d 0):ms) = go ms
 go ((Move d n):ms) = do
-  (h, t) <- getHt
-  let newH = Grid.move d h
-  let newT = (if touches newH t then t else h)
-  putHt (newH, newT)
-  rememberPoint newT
+  hts <- getHts
+  let newH = Grid.move d (head hts)
+  let newHts = fixHts (newH:tail hts)
+  putHts newHts
+  rememberPoint (last hts)
   go (Move d (n-1):ms)
   
+fixHts :: [Grid.Point] -> [Grid.Point]
+fixHts [x] = [x]
+fixHts(h:t:ts)
+  | touches h t = h:t:ts
+  | otherwise = h:fixHts (moveT h t:ts)
+    
+moveT :: Grid.Point -> Grid.Point -> Grid.Point
+moveT (hx,hy) (tx,ty) = (closerTo hx tx, closerTo hy ty)
+  where
+    closerTo x2 x1
+      | x1 == x2 = x1
+      | x1 < x2 = x1 + 1
+      | otherwise = x1 - 1

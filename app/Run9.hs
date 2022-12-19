@@ -7,4 +7,5 @@ input = ["R 1","U 2","R 1","L 2","D 2","U 1","R 2","U 1","L 2","U 1","D 2","R 1"
 main :: IO ()
 main = do
   print $ day9a input
+  print $ day9b input
 

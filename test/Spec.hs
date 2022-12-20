@@ -17,6 +17,7 @@ import Day6
 import Day7
 import Day8
 import Day9
+import Day10
 
 main :: IO ()
 main = hspec $ do
@@ -157,3 +158,14 @@ main = hspec $ do
     it "day9b" $ do
       day9b example `shouldBe` 1
       day9b example2 `shouldBe` 35 -- Should be 36, also the real answer is one off
+      
+  describe "day 10" $ do
+    let example = ["addx 15","addx -11","addx 6","addx -3","addx 5","addx -1","addx -8","addx 13","addx 4","noop","addx -1","addx 5","addx -1","addx 5","addx -1","addx 5","addx -1","addx 5","addx -1","addx -35","addx 1","addx 24","addx -19","addx 1","addx 16","addx -11","noop","noop","addx 21","addx -15","noop","noop","addx -3","addx 9","addx 1","addx -3","addx 8","addx 1","addx 5","noop","noop","noop","noop","noop","addx -36","noop","addx 1","addx 7","noop","noop","noop","addx 2","addx 6","noop","noop","noop","noop","noop","addx 1","noop","noop","addx 7","addx 1","noop","addx -13","addx 13","addx 7","noop","addx 1","addx -33","noop","noop","noop","addx 2","noop","noop","noop","addx 8","noop","addx -1","addx 2","addx 1","noop","addx 17","addx -9","addx 1","addx 1","addx -3","addx 11","noop","noop","addx 1","noop","addx 1","noop","noop","addx -13","addx -19","addx 1","addx 3","addx 26","addx -30","addx 12","addx -1","addx 3","addx 1","noop","noop","noop","addx -9","addx 18","addx 1","addx 2","noop","noop","addx 9","noop","noop","noop","addx -1","addx 2","addx -37","addx 1","addx 3","noop","addx 15","addx -21","addx 22","addx -6","addx 1","noop","addx 2","addx 1","noop","addx -10","noop","noop","addx 20","addx 1","addx 2","addx 2","addx -6","addx -11","noop","noop","noop"]
+    it "day10a" $ do
+      day10a example `shouldBe` 13140
+    it "day10b" $ do
+      let result = unlines ["##..##..##..##..##..##..##..##..##..##..","###...###...###...###...###...###...###.","####....####....####....####....####....","#####.....#####.....#####.....#####.....","######......######......######......####","#######.......#######.......#######....."]
+      day10b example `shouldBe` result
+    it "runProgram" $ do
+      runProgram (Day10.parseInput ["noop","addx 3","addx -5","noop"]) `shouldBe` [1,1,1,4,4,-1]
+      

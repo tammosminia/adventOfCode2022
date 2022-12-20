@@ -14,6 +14,7 @@ extra-source-files:
 library
   exposed-modules:
       Day1
+      Day10
       Day2
       Day2020_1
       Day2020_2
@@ -46,6 +47,7 @@ executable adventOfCode2022-exe
   main-is: Main.hs
   other-modules:
       Run1
+      Run10
       Run2
       Run2020_1
       Run2020_2

@@ -34,9 +34,9 @@ parseInput = map parseLine
     parseDirection "L" = Grid.West
     
 rememberPoint :: Grid.Point -> RopeState ()
-rememberPoint p = do
-  Rope path hts <- get
-  put (Rope (p:path) hts)
+rememberPoint p = modify update
+  where 
+    update (Rope path hts) = Rope (p:path) hts
   
 getHts :: RopeState [Grid.Point]
 getHts = do

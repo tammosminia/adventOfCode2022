@@ -15,6 +15,7 @@ library
   exposed-modules:
       Day1
       Day10
+      Day11
       Day2
       Day2020_1
       Day2020_2
@@ -39,6 +40,8 @@ library
     , hspec
     , mtl
     , pqueue
+    , regex-base
+    , regex-posix
     , split
     , unordered-containers
   default-language: Haskell2010
@@ -48,6 +51,7 @@ executable adventOfCode2022-exe
   other-modules:
       Run1
       Run10
+      Run11
       Run2
       Run2020_1
       Run2020_2
@@ -71,6 +75,8 @@ executable adventOfCode2022-exe
     , hspec
     , mtl
     , pqueue
+    , regex-base
+    , regex-posix
     , split
     , unordered-containers
   default-language: Haskell2010
@@ -92,6 +98,8 @@ test-suite adventOfCode2022-test
     , hspec
     , mtl
     , pqueue
+    , regex-base
+    , regex-posix
     , split
     , unordered-containers
   default-language: Haskell2010

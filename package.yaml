@@ -22,6 +22,8 @@ dependencies:
 - unordered-containers
 - hashable
 - mtl
+- regex-base
+- regex-posix
 
 library:
   source-dirs: src

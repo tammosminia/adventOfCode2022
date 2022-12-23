@@ -2,6 +2,8 @@ module Util where
 
 import Data.List
 import qualified Data.Map as Map
+import Text.Regex.Base
+import Text.Regex.Posix
 
 mapOfLists :: (Ord k, Eq k) => [(k, v)] -> Map.Map k [v]
 mapOfLists l = Map.fromList lll
@@ -56,3 +58,8 @@ takeUntil pred [] = []
 takeUntil pred (x:xs) 
   | pred x = [x]
   | otherwise = (x:takeUntil pred xs)
+  
+readInts :: String -> [Int]
+readInts s = map stringToInt intStrs
+  where
+    intStrs = map head (s =~ "[0-9]+" :: [[String]])

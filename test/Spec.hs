@@ -18,6 +18,7 @@ import Day7
 import Day8
 import Day9
 import Day10
+import Day11
 
 main :: IO ()
 main = hspec $ do
@@ -41,6 +42,12 @@ main = hspec $ do
       
     it "takeUntil" $ do
       takeUntil (>2) [1,2,3,4,5] `shouldBe` [1,2,3]
+      
+    it "readInts" $ do
+      readInts "" `shouldBe` []
+      readInts "bla" `shouldBe` []
+      readInts "13" `shouldBe` [13]
+      readInts "bla 1 2 bla 3" `shouldBe` [1,2,3]
       
   describe "grid" $ do
     it "allPoints" $ do
@@ -169,3 +176,9 @@ main = hspec $ do
     it "runProgram" $ do
       runProgram (Day10.parseInput ["noop","addx 3","addx -5","noop"]) `shouldBe` [1,1,1,4,4,-1]
       
+  describe "day 11" $ do
+    let example = ["Monkey 0:","Starting items: 79, 98","Operation: new = old * 19","Test: divisible by 23","If true: throw to monkey 2","If false: throw to monkey 3","","Monkey 1:","Starting items: 54, 65, 75, 74","Operation: new = old + 6","Test: divisible by 19","If true: throw to monkey 2","If false: throw to monkey 0","","Monkey 2:","Starting items: 79, 60, 97","Operation: new = old * old","Test: divisible by 13","If true: throw to monkey 1","If false: throw to monkey 3","","Monkey 3:","Starting items: 74","Operation: new = old + 3","Test: divisible by 17","If true: throw to monkey 0","If false: throw to monkey 1"]
+    it "day11a" $ do
+      day11a example `shouldBe` 10605
+    it "day11b" $ do
+      day11b example `shouldBe` 2713310158
